@@ -1,7 +1,6 @@
 /**
 	模拟 alert 弹框
 	autor：yangbin
-	time:2015-1-24
 */
 ;(function(win,doc){
 	//初始方法
