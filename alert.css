@@ -1,22 +1,36 @@
+#maskLayer{
+	position: fixed;
+	left: 0;
+	top:0;
+	background-color: #000;
+	width:100%;
+	height: 100%;
+}
 #alertBox{
 	position: absolute;
 	width: 90%;
-	top: 50%;
 	left: 50%;
-	margin-left: -45%;
-	padding: 10px;
-	box-shadow: 0 0 6px #eee;
-	-webkit-box-shadow:0px 0px 6px #eee;
+	transform:translateX(-50%);
+	-webkit-transform: translateX(-50%);
+	-moz-ransform: translateX(-50%);
+	box-shadow: 0 0 3px #eee;
+	-webkit-box-shadow:0px 0px 3px #eee;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+}
+div.alertText{
+	margin-bottom: 0;
+	padding-top: 15px;
+	padding-bottom: 15px;
 }
 #alertBox .alertText,#alertBox .alert-button{
 	text-align: center;
-}
-#alertBox p{
-	margin-bottom: 0;
+	font-size: 16px;
 }
 #alertBox .alert-button{
-	margin-top: 10px;
 	padding-top: 10px;
+	padding-bottom: 10px;
 }
 #alertBox button{
 	display: inline-block;
@@ -28,6 +42,33 @@
 	white-space: nowrap;
 	vertical-align: middle;
 }
+#alertBox #btn-close{
+	position: absolute;
+	right: 10px;
+	top:9px;
+	background: url(images/close.png) 0 0 no-repeat;
+	background-size: 100%;
+	width:24px;
+	height: 24px;
+}
+#alertBox .alertTitle{
+	height: 42px;
+	line-height: 42px;
+	font-size: 16px;
+	text-align: center;
+}
+
+#alertBox.alertBox{
+	background-color: #fff;
+	border:1px solid #fff;
+}
+#alertBox.alertBox .alert-button{
+	border-top: 1px solid #eee;
+}
+#alertBox.alertBox button{
+	border:1px solid #eee;
+}
+
 #alertBox.alertBox-error{
 	background-color: #f2dede;
 	border:1px solid #ebccd1;
@@ -44,13 +85,35 @@
 	border:1px solid #d43f3a;
 }
 
-#alertBox.alertBox-normal{
-	background-color: #fafafa;
-	border:1px solid #dcdcdc;
+#alertBox.alertBox-confirm .alert-button,#alertBox.alertBox-confirmClose .alert-button{
+	padding-top: 0;
+	padding-bottom: 0;
 }
-#alertBox.alertBox-normal .alert-button{
-	border-top: 1px solid #dcdcdc;
+#alertBox.alertBox-confirm button,#alertBox.alertBox-confirmClose button{
+	line-height: 38px;
+	height: 38px;
+	padding: 0;
+	border: none;
+	border-left: 1px solid #eee;
+	background-color: #fff;
+	border-radius: 0px 4px 4px 0;
+	-webkit-border-radius: 0px 4px 4px 0;
 }
-#alertBox.alertBox-normal button{
-	border:1px solid #dcdcdc;
+#alertBox.alertBox-confirm button.close,#alertBox.alertBox-confirmClose button.close{
+	border-left: none;
+}
+/*#alertBox button.confirm{
+	background-color: #379bfa;
+	color: #fff;
+	border-radius: 0 5px 0 0;
+	-webkit-border-radius:0 0 5px 0;
+}*/
+
+#alertBox.alertBox-close .alertText{
+	padding: 0;
+}
+#alertBox.alertBox-close .alertText .list-right-box li{
+	text-align: left;
+	padding-right: 15px;
+	padding-left: 15px;
 }
