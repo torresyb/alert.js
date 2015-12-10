@@ -40,9 +40,9 @@
 		return this;
 	};
 	//获取弹框的高度
-	alertFun.prototype._height = function(){
-		return this.el.offsetHeight || this.el.clientHeight;
-	};
+	// alertFun.prototype._height = function(){
+	// 	return this.el.offsetHeight || this.el.clientHeight;
+	// };
 	//删除和添加Class
 	alertFun.prototype._class = function(classname,isRemove){
 		var el = this.el;
@@ -64,6 +64,7 @@
 		// 设置 class
 		this.el.className="alertBox";
 		this._class("alertBox-"+this.config.status);
+		this.titlestyle = this.config.titlestyle ? this.config.titlestyle : "";
 
 		switch(this.config.status){
 			case 'error':
@@ -77,13 +78,17 @@
 				this.strHtml = '<div class="alertText">'+this.config.message+'</div>'+
 							   '<div class="alert-button"><button class="close">确定</button></div>';
 				break;
+			case 'know':
+				this.strHtml = '<div class="alertText c-green">'+this.config.message+'</div>'+
+							   '<div class="alert-button"><button class="confirm btn-red c-fff">知道了</button></div>';
+				break;
 			case 'close':
-				this.strHtml = '<div class="alertTitle">'+this.config.title+'</div>'+
+				this.strHtml = '<div class="alertTitle '+this.titlestyle+'">'+this.config.title+'</div>'+
 							   '<span id="btn-close" class="close"></span>'+
 						       '<div class="alertText">'+this.config.message+'</div>';
 				break;
 			case 'confirmClose':
-				this.strHtml = '<div class="alertTitle">'+this.config.title+'</div>'+
+				this.strHtml = '<div class="alertTitle '+this.titlestyle+'">'+this.config.title+'</div>'+
 							   '<span id="btn-close" class="close"></span>'+
 						       '<div class="alertText">'+this.config.message+'</div>'+
 						       '<div class="alert-button display-table"><button class="cell col-6 close">取消</button><button class="cell col-6 confirm">确定</button></div>';
@@ -104,18 +109,10 @@
 		//加入到页面
 		if(!!self.config.mark) {
 			doc.body.appendChild($mark);
-			$mark.style.opacity = 0.5;
-			$mark.style.zIndex = 998;
 		}
 		el.innerHTML = self.strHtml;
 		doc.body.appendChild(el);
-		// 获取当前弹框的高度
-		var top = (document.documentElement.clientHeight-this._height())/2+Math.max(document.body.scrollTop,document.documentElement.scrollTop);
-		// 弹框显示
-		el.style.top = top+'px';
-		el.style.opacity=1;
-		el.style.zIndex=999;
-		
+
 		duration && setTimeout(function(){
 			self.hide();
 			callback && callback();
@@ -145,10 +142,8 @@
 	alertFun.prototype.hide = function(){
 		var el = this.el,
 			$mark = this.mark;
-		el.style.opacity=0;
-		el.style.zIndex=-1;
-		$mark.style.opacity = 0;
-		$mark.style.zIndex = -1;
+		document.body.removeChild(el);
+		document.body.removeChild($mark);
 		return this;
 	};
 

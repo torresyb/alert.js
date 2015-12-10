@@ -2,22 +2,25 @@
 	position: fixed;
 	left: 0;
 	top:0;
-	background-color: #000;
+	z-index: 998;
 	width:100%;
 	height: 100%;
+	background-color: rgba(0, 0, 0, 0.6);
 }
 #alertBox{
-	position: absolute;
+	position: fixed;
 	width: 90%;
+	top: 50%;
 	left: 50%;
-	transform:translateX(-50%);
-	-webkit-transform: translateX(-50%);
-	-moz-ransform: translateX(-50%);
+	transform:translate(-50%,-50%);
+	-webkit-transform: translate(-50%,-50%);
+	-moz-ransform: translate(-50%,-50%);
 	box-shadow: 0 0 3px #eee;
 	-webkit-box-shadow:0px 0px 3px #eee;
 	border-radius: 5px;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
+	z-index: 999;
 }
 div.alertText{
 	margin-bottom: 0;
@@ -102,12 +105,6 @@ div.alertText{
 #alertBox.alertBox-confirm button.close,#alertBox.alertBox-confirmClose button.close{
 	border-left: none;
 }
-/*#alertBox button.confirm{
-	background-color: #379bfa;
-	color: #fff;
-	border-radius: 0 5px 0 0;
-	-webkit-border-radius:0 0 5px 0;
-}*/
 
 #alertBox.alertBox-close .alertText{
 	padding: 0;
