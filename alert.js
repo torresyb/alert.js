@@ -140,10 +140,11 @@
 	};
 	//隐藏弹框
 	alertFun.prototype.hide = function(){
-		var el = this.el,
-			$mark = this.mark;
-		document.body.removeChild(el);
-		document.body.removeChild($mark);
+		var $el = doc.getElementById("alertBox"),
+			$mark = doc.getElementById("maskLayer");
+
+		$el && $el.parentNode.removeChild($el);
+		$mark && $mark.parentNode.removeChild($mark);
 		return this;
 	};
 
